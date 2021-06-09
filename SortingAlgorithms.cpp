@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#define dim 10
 
 template<class T>
 void swap(T& a, T&b){
@@ -90,4 +91,56 @@ void quickSort(T* a, int l, int r){
 template<class T, int N>
 void quickSort(T* a){
     quickSort(a,0,N-1);
+}
+
+template <class T>
+void merge(T* arr, int left, int centro, int right){
+    int i, j, k;
+    i = left;
+    j = centro+1;
+    k = i;
+    T b[dim];
+
+    while(i<=centro && j<=right){
+        if(arr[i] <= arr[j]){
+            b[k] = arr[i];
+            i++;
+        }
+        else{
+            b[k] = arr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while(i<=centro){
+        b[k] = arr[i];
+        i++;
+        k++;
+    }
+
+    while(j<=right){
+        b[k] = arr[j];
+        j++;
+        k++;
+    }
+
+    for(k = left; k<=right; k++){
+        arr[k] = b[k];
+    }
+}
+
+template <class T>
+void mergeSort(T* arr,int left,int right){
+    if(left < right){
+        int center = (left+right)/2;
+        mergeSort(arr,left, center);
+        mergeSort(arr, center+1, right);
+        merge(arr, left, center, right);
+    }
+}
+
+template <class T>
+void mergeSort(T* arr, int N){
+    mergeSort(arr,0,N-1);
 }
