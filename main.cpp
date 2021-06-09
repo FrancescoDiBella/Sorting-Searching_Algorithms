@@ -8,22 +8,23 @@ int randomic(int a){
 
 
 int main(){
+    int dim = 10;
     srand(time(NULL));
-    int arr[10] = {0};
+    int arr[dim]= {0};
 
     std::cout << "ARRAY PRIMA SELECTIONSORT \n";
-    for(int i =0; i<5; i++){
-        arr[i] = randomic(5);
-        std::cout << arr[i] << " ";
-    }
-    for(int i =5; i<10; i++){
-        arr[i] = i;
+    
+    for(int i =0; i<dim; i++){
+        arr[i] = randomic(100);
         std::cout << arr[i] << " ";
     }
 
-    BubbleSortOPT<int,10>(arr);
+    quickSort<int,10>(arr);
+    
     std::cout << std::endl << "ARRAY DOPO SELECTIONSORT \n";
-    for(int i =0; i<10; i++){
+    for(int i =0; i<dim; i++){
         std::cout << arr[i] << " ";
     }
 }
+
+
