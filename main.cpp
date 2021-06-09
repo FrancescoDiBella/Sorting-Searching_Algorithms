@@ -26,5 +26,3 @@ int main(){
         std::cout << arr[i] << " ";
     }
 }
-
-
